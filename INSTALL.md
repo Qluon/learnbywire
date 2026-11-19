@@ -1,6 +1,6 @@
 # Installation and activation
 
-PyPI publication of LearnByWire 1.2.2, TrainerPlus 1.1.1 and OptimizerPlus 1.2.2 is pending. TrainerPlus can be installed from this repository now. Combined installation uses the approved wheel bundle when supplied by Qluon.
+TrainerPlus 1.1.1 is available on PyPI. Publication of LearnByWire 1.2.2 and OptimizerPlus 1.2.2 remains pending. Combined installation uses the approved wheel bundle when supplied by Qluon.
 
 ## Combined installation
 
@@ -20,7 +20,7 @@ The existing PyPI 1.2.0 packages used overlapping import directories. If migrati
 
 ## TrainerPlus without OptimizerPlus
 
-Install the public source in a fresh environment. The commands below use the CUDA stack from the measured NVIDIA runs:
+Install the public package from PyPI in a fresh environment. Clone this repository for the runnable examples. The commands below use the CUDA stack from the measured NVIDIA runs:
 
 ```bash
 git clone https://github.com/Qluon/learnbywire.git
@@ -28,7 +28,7 @@ cd learnbywire
 python3.12 -m venv .venv
 . .venv/bin/activate
 python -m pip install 'torch==2.11.0+cu128' --index-url https://download.pytorch.org/whl/cu128
-python -m pip install './packages/trainerplus[lora]'
+python -m pip install 'learnbywire-trainerplus[lora]==1.1.1'
 python -m pip check
 ```
 

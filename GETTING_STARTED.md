@@ -2,7 +2,7 @@
 
 LearnByWire combines TrainerPlus, which prepares data and manages training, with OptimizerPlus, a control layer over your existing optimizer. You provide the model, data and training settings. The published benchmarks are examples, not a list of permitted models or datasets.
 
-This guide uses LearnByWire 1.2.2, OptimizerPlus 1.2.2 and TrainerPlus 1.1.1. PyPI publication of these versions is pending. For native training, install [TrainerPlus from source](INSTALL.md#trainerplus-without-optimizerplus), skip OptimizerPlus activation and use `--control native` in the training command below. OptimizerPlus training requires the matching wheel bundle and entitlement supplied by Qluon. The example files below are in this source repository, not installed by the wheels.
+This guide uses LearnByWire 1.2.2, OptimizerPlus 1.2.2 and TrainerPlus 1.1.1. TrainerPlus 1.1.1 is available on PyPI; publication of the other two packages remains pending. For native training, [install TrainerPlus](INSTALL.md#trainerplus-without-optimizerplus), skip OptimizerPlus activation and use `--control native` in the training command below. OptimizerPlus training requires the matching wheel bundle and entitlement supplied by Qluon. The example files below are in this source repository, not installed by the wheels.
 
 ## 1. Install
 

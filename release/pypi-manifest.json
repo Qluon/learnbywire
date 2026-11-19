@@ -25,7 +25,7 @@
     "learnbywire": {
       "version": "1.2.2",
       "filename": "learnbywire-1.2.2-py3-none-any.whl",
-      "sha256": "43416c7c29583af1607de68c9c34c574d2db2a64fba62742296143a8d4af23e3",
+      "sha256": "69231552e0e43fd467e72071cc471d6f7aab32e456794d1edbb4d4479693c40a",
       "release_tag": "v1.2.2",
       "approved_for_pypi": false,
       "pending": "Publish the qualified OptimizerPlus and TrainerPlus dependencies first",
