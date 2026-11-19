@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "repository": "Qluon/learnbywire",
+  "packages": {
+    "learnbywire-trainerplus": {
+      "version": "1.1.1",
+      "filename": "learnbywire_trainerplus-1.1.1-py3-none-any.whl",
+      "sha256": "f7c2b4b89ecf2edd3c202ed7a14e6720943c47996a595004429515fe5638b276",
+      "release_tag": "trainerplus-v1.1.1",
+      "approved_for_pypi": true,
+      "namespace": "trainerplus",
+      "license": "Apache-2.0",
+      "requires_published": []
+    },
+    "learnbywire-optimizerplus": {
+      "version": "1.2.2",
+      "filename": "learnbywire_optimizerplus-1.2.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "sha256": "e618e4552cd819f91f7fab5a38d00c9b03d2d6f00622665850c3c3a92886fca9",
+      "release_tag": "optimizerplus-v1.2.2",
+      "approved_for_pypi": false,
+      "pending": "Production signing identity and positive customer entitlement validation",
+      "namespace": "optimizerplus",
+      "requires_published": []
+    },
+    "learnbywire": {
+      "version": "1.2.2",
+      "filename": "learnbywire-1.2.2-py3-none-any.whl",
+      "sha256": "43416c7c29583af1607de68c9c34c574d2db2a64fba62742296143a8d4af23e3",
+      "release_tag": "v1.2.2",
+      "approved_for_pypi": false,
+      "pending": "Publish the qualified OptimizerPlus and TrainerPlus dependencies first",
+      "namespace": "learnbywire",
+      "license": "Apache-2.0",
+      "requires_published": ["learnbywire-optimizerplus", "learnbywire-trainerplus"]
+    }
+  }
+}
