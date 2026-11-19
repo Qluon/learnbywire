@@ -31,7 +31,7 @@ python -c 'import importlib.metadata as m; print({n: m.version(n) for n in ("lea
 optimizerplus verify-install
 ```
 
-Expected versions are `1.2.2`, `1.1.1` and `1.2.2`, respectively. Activate a licence that authorizes OP 1.2.2 and matches the wheel's verification key and your machine. An older entitlement is not automatically valid for this release.
+Expected versions are `1.2.2`, `1.1.1` and `1.2.2`, respectively. Activate a licence that authorizes OptimizerPlus 1.2.2 and matches the wheel's verification key and your machine. An older entitlement is not automatically valid for this release.
 
 The shared imports remain familiar:
 
@@ -39,6 +39,6 @@ The shared imports remain familiar:
 from learnbywire import TrainerPlus, OptimizerPlus, TrainingConfig, DataConfig
 ```
 
-Use the [complete first-run guide](GETTING_STARTED.md) to adapt your training code. TrainerPlus prepares data and runs the chosen native or OP session. Existing training checkpoints should stay with the environment and workload that produced them; do not assume cross-version optimizer/runtime recovery. For LoRA weights, retain the original base model ID/revision and follow the [adapter loading example](docs/USER_GUIDE.md#saving-and-reusing-the-result).
+Use the [complete first-run guide](GETTING_STARTED.md) to adapt your training code. TrainerPlus prepares data and runs the chosen native or OptimizerPlus session. Existing training checkpoints should stay with the environment and workload that produced them; do not assume cross-version optimizer/runtime recovery. For LoRA weights, retain the original base model ID/revision and follow the [adapter loading example](docs/USER_GUIDE.md#saving-and-reusing-the-result).
 
 The Apache-2.0 decision applies to the new public interface and TrainerPlus sources. It does not relicense the old proprietary distributions or the separately supplied OptimizerPlus component. Benchmark configurations remain examples, not a whitelist of customer workloads.

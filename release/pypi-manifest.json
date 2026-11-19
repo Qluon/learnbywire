@@ -15,7 +15,7 @@
     "learnbywire-optimizerplus": {
       "version": "1.2.2",
       "filename": "learnbywire_optimizerplus-1.2.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
-      "sha256": "e618e4552cd819f91f7fab5a38d00c9b03d2d6f00622665850c3c3a92886fca9",
+      "sha256": "178de109d3c9e22f8a3669f0b5da6e12526ebdba38156435ac0f6b94594258a1",
       "release_tag": "optimizerplus-v1.2.2",
       "approved_for_pypi": false,
       "pending": "Production signing identity and positive customer entitlement validation",
@@ -31,7 +31,10 @@
       "pending": "Publish the qualified OptimizerPlus and TrainerPlus dependencies first",
       "namespace": "learnbywire",
       "license": "Apache-2.0",
-      "requires_published": ["learnbywire-optimizerplus", "learnbywire-trainerplus"]
+      "requires_published": [
+        "learnbywire-optimizerplus",
+        "learnbywire-trainerplus"
+      ]
     }
   }
 }

@@ -24,7 +24,7 @@ Expected last output: `No broken requirements found.` The combined installation 
 optimizerplus machine-id
 ```
 
-Give this fingerprint privately to the Qluon contact supplying your package and obtain an entitlement for OP 1.2.2. Keep the returned licence outside your source repository:
+Give this fingerprint privately to the Qluon contact supplying your package and obtain an entitlement for OptimizerPlus 1.2.2. Keep the returned licence outside your source repository:
 
 ```bash
 export QLUON_OPTIMIZER_PLUS_LICENSE_FILE=/private/path/customer.license
@@ -35,7 +35,7 @@ optimizerplus license-status
 optimizerplus doctor --check
 ```
 
-The version should be `1.2.2`; the other commands should exit successfully. `doctor` checks environment prerequisites without loading a model or training. It does not predict performance on your workload. Native TrainerPlus training does not need an OP licence.
+The version should be `1.2.2`; the other commands should exit successfully. `doctor` checks environment prerequisites without loading a model or training. It does not predict performance on your workload. Native TrainerPlus training does not need an OptimizerPlus licence.
 
 ## 3. Prepare data
 
@@ -73,7 +73,7 @@ The model ID is an example. Use your own compatible Hugging Face ID or a local m
 
 This command uses LoRA, public fused AdamW, constant LR `2e-4`, BF16 base weights and FP32 trainable adapters. OptimizerPlus manages its controlled training session. The example uses serial execution and token-weighted loss, which suit padded user data; it does not force the specialized dense parallel benchmark settings.
 
-The terminal first reports prepared rows, effective batch size and planned updates. Automatic OP control currently needs at least 50 updates; compilation and initial controller work make startup slower than steady training. This minimum is an implementation requirement, not a restriction on which workloads you may test.
+The terminal first reports prepared rows, effective batch size and planned updates. Automatic OptimizerPlus control currently needs at least 50 updates; compilation and initial controller work make startup slower than steady training. This minimum is an implementation requirement, not a restriction on which workloads you may test.
 
 For a full epoch on your data, replace the data paths and omit `--steps`. Use `--epochs 3` for three epochs. Effective batch size is microbatch × accumulation; with 100 rows and batch 2, one epoch is 50 updates. The example reports an error if the data or epoch budget cannot supply the requested updates. It never silently repeats data to meet the budget.
 

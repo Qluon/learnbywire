@@ -1,6 +1,6 @@
 # Using LearnByWire with your model and data
 
-Start with [installation and a first run](../GETTING_STARTED.md). The examples below use the real APIs in LBW 1.2.2, OP 1.2.2 and TP 1.1.1. Models and datasets are supplied by you; the benchmark settings are not mandatory defaults.
+Start with [installation and a first run](../GETTING_STARTED.md). The examples below use the real APIs in LearnByWire 1.2.2, OptimizerPlus 1.2.2 and TrainerPlus 1.1.1. Models and datasets are supplied by you; the benchmark settings are not mandatory defaults.
 
 ## Which component does what?
 
@@ -86,10 +86,10 @@ The [runnable command-line example](../packages/trainerplus/examples/first_run.p
 | Setting | Native | OptimizerPlus |
 |---|---|---|
 | `control` | `None` | Imported `OptimizerPlus` class |
-| `control_options` | Omit or `None` | OP options dictionary |
-| `native_compile` | `False` for eager; `True` for public HF compilation | `False`; OP owns compilation |
+| `control_options` | Omit or `None` | OptimizerPlus options dictionary |
+| `native_compile` | `False` for eager; `True` for public HF compilation | `False`; OptimizerPlus owns compilation |
 | Optimizer | Public AdamW instance | Same public AdamW configuration |
-| Execution owner | Public HF Trainer | OP session through TrainerPlus |
+| Execution owner | Public HF Trainer | OptimizerPlus session through TrainerPlus |
 
 For a fresh comparison create a fresh model, optimizer and TrainerPlus instance with the same seed and settings. Reusing an already-trained model changes the comparison. `TrainerPlus` instances are single-use, and each `.train()` creates a separate run directory. The user guide does not promise that every configuration will improve speed or quality; measure your workload.
 
@@ -140,7 +140,7 @@ dataset = TokenDataset(
 )
 ```
 
-Here the three tensors come from your own preprocessing. Raw-text users should use the file or record APIs above instead. Padding labels must be `-100`; the first causal label is masked automatically. Every row must contain a supervised target. OP training through TP requires fixed-length rows. Native training can use variable-length rows with `TokenDataset.from_rows(...)` or `DataConfig(padding="dynamic")`.
+Here the three tensors come from your own preprocessing. Raw-text users should use the file or record APIs above instead. Padding labels must be `-100`; the first causal label is masked automatically. Every row must contain a supervised target. OptimizerPlus training through TrainerPlus requires fixed-length rows. Native training can use variable-length rows with `TokenDataset.from_rows(...)` or `DataConfig(padding="dynamic")`.
 
 ## Choosing settings
 
@@ -163,9 +163,9 @@ Here the three tensors come from your own preprocessing. Raw-text users should u
 | `truncation` | Default `error`; choose `truncate` deliberately to cut long records |
 | `seed` | Controls initialization/order randomness; keep it fixed for a paired comparison |
 
-Automatic OP startup currently requires at least 50 planned updates. This is a runtime guard in the current version. For `N` prepared rows, microbatch `m`, accumulation `a`, and `e` epochs, the available updates are `floor(N / (m*a)) * e`, with explicit `drop_last=True` required if there is a remainder. Packing changes `N`, so count prepared rows rather than source documents.
+Automatic OptimizerPlus startup currently requires at least 50 planned updates. This is a runtime guard in the current version. For `N` prepared rows, microbatch `m`, accumulation `a`, and `e` epochs, the available updates are `floor(N / (m*a)) * e`, with explicit `drop_last=True` required if there is a remainder. Packing changes `N`, so count prepared rows rather than source documents.
 
-An external cosine schedule and OP's control are separate choices. The example deliberately uses constant base LR and no external warmup; it does not claim that this setting is best for every workload. When native and OP are compared, record any difference in schedules or loss weighting.
+An external cosine schedule and OptimizerPlus's control are separate choices. The example deliberately uses constant base LR and no external warmup; it does not claim that this setting is best for every workload. When native and OptimizerPlus are compared, record any difference in schedules or loss weighting.
 
 `token_mean` weights supervised tokens equally across an update. `microbatch_mean` averages microbatch losses equally; the two differ if microbatches have different numbers of supervised tokens. The quickstart uses token mean for ordinary padded data. The reported dense parallel benchmark explicitly uses microbatch mean. Do not silently switch reductions while claiming an otherwise identical quality comparison.
 
@@ -191,18 +191,18 @@ with torch.inference_mode():
 print(tokenizer.decode(output[0], skip_special_tokens=True))
 ```
 
-A final adapter export is for reuse/inference, not an optimizer-state checkpoint. To resume training, enable `save_steps`, keep the original model/data/settings, create a new trainer and pass the recorded checkpoint path to `trainer.train(resume_from_checkpoint=...)`. The current recovery contract verifies workload identity; changing data, release or settings is a new run. Native recovery is covered by CPU tests; OP 1.2.2's recovery path has not been revalidated on GPU in the current release study.
+A final adapter export is for reuse/inference, not an optimizer-state checkpoint. To resume training, enable `save_steps`, keep the original model/data/settings, create a new trainer and pass the recorded checkpoint path to `trainer.train(resume_from_checkpoint=...)`. The current recovery contract verifies workload identity; changing data, release or settings is a new run. Native recovery is covered by CPU tests; OptimizerPlus 1.2.2's recovery path has not been revalidated on GPU in the current release study.
 
 ## Reading metrics correctly
 
 `result.metrics` reports completed examples, valid input tokens, supervised tokens, training seconds, input/supervised tokens per training second, and workflow seconds. With validation it also reports loss, perplexity and next-token accuracy. Next-token accuracy is not a downstream question-answer benchmark score. Lower perplexity means the model assigns greater probability to the held-out tokens; compare on the same dataset/tokenizer and masking.
 
-Training seconds include session setup, controller/compile startup, periodic evaluations and saves. TP workflow seconds additionally include its manifest work, final evaluation and export; model loading and prior tokenization happen before this timer. The paper's benchmark workflow timer starts earlier, so do not label TP's built-in rate as the same measurement. For TP's timed workflow rate, divide `input_tokens` by `workflow_seconds` and describe the timing boundary.
+Training seconds include session setup, controller/compile startup, periodic evaluations and saves. TrainerPlus workflow seconds additionally include its manifest work, final evaluation and export; model loading and prior tokenization happen before this timer. The paper's benchmark workflow timer starts earlier, so do not label TrainerPlus's built-in rate as the same measurement. For TrainerPlus's timed workflow rate, divide `input_tokens` by `workflow_seconds` and describe the timing boundary.
 
 Energy, NVML sampling, peak VRAM, retention datasets and downstream accuracy are extra measurements in the benchmark harness, not automatically collected by a basic `trainer.train()` call. See the [measured protocol](../benchmarks/README.md) before comparing numbers. The low-memory evaluator is a separate helper; the standard TrainerPlus evaluation method does not automatically use it.
 
 ## Trying another model or sharing a finding
 
-Change the model/tokenizer and model-appropriate LoRA targets, then use your own data and settings. OP selects acceleration by model structure; it does not check against the benchmark model-name list. Keep serial execution for general settings. The specialized parallel path has additional shape and reduction requirements described in the [configuration guide](../packages/trainerplus/docs/technical/SUPPORT_MATRIX.md).
+Change the model/tokenizer and model-appropriate LoRA targets, then use your own data and settings. OptimizerPlus selects acceleration by model structure; it does not check against the benchmark model-name list. Keep serial execution for general settings. The specialized parallel path has additional shape and reduction requirements described in the [configuration guide](../packages/trainerplus/docs/technical/SUPPORT_MATRIX.md).
 
 Record versions, model revision, settings, runtime selection and the observed result. For a problem report include a small non-sensitive reproducer and the relevant error. Never include a licence, signing key, private training data or customer model weights in a public issue. See [troubleshooting](TROUBLESHOOTING.md).

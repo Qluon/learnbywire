@@ -14,7 +14,7 @@ python -m pip install --find-links /path/to/approved-wheel-bundle 'learnbywire==
 python -m pip check
 ```
 
-The combined package pins TrainerPlus 1.1.1 and OptimizerPlus 1.2.2. Its OP dependency pins Transformers 5.8.0 and PEFT 0.19.1. Do not mix another OptimizerPlus distribution that also owns the `learnbywire` namespace into this environment.
+The combined package pins TrainerPlus 1.1.1 and OptimizerPlus 1.2.2. Its OptimizerPlus dependency pins Transformers 5.8.0 and PEFT 0.19.1. Do not mix another OptimizerPlus distribution that also owns the `learnbywire` namespace into this environment.
 
 The existing PyPI 1.2.0 packages used overlapping import directories. If migrating from either `learnbywire==1.2.0` or `learnbywire-optimizerplus==1.2.0`, follow the [migration guide](MIGRATION.md) and keep the previous environment separate.
 
@@ -42,11 +42,11 @@ python -m pip install --find-links /path/to/approved-wheel-bundle 'learnbywire-t
 from trainerplus import TrainerPlus, TrainingConfig, DataConfig, TokenDataset
 ```
 
-Native training does not require an OP licence. The public `examples/train.py` supports this standalone TP installation. The shared `learnbywire` convenience package deliberately installs both components.
+Native training does not require an OptimizerPlus licence. The public `examples/train.py` supports this standalone TrainerPlus installation. The shared `learnbywire` convenience package deliberately installs both components.
 
 ## OptimizerPlus activation
 
-A signed entitlement authorizing OP 1.2.2 is required for controlled training. Obtain the host fingerprint with `optimizerplus machine-id` and provide it privately to Qluon. Supply the returned licence path with `QLUON_OPTIMIZER_PLUS_LICENSE_FILE`; never commit the file.
+A signed entitlement authorizing OptimizerPlus 1.2.2 is required for controlled training. Obtain the host fingerprint with `optimizerplus machine-id` and provide it privately to Qluon. Supply the returned licence path with `QLUON_OPTIMIZER_PLUS_LICENSE_FILE`; never commit the file.
 
 ```bash
 export QLUON_OPTIMIZER_PLUS_LICENSE_FILE=/private/path/customer.license
@@ -54,7 +54,7 @@ optimizerplus verify-install
 optimizerplus license-status
 ```
 
-A QA entitlement is not a customer licence. A wheel without a matching entitlement does not activate OP. Native compilation and machine binding are not guarantees against reverse engineering or privileged local tampering.
+A QA entitlement is not a customer licence. A wheel without a matching entitlement does not activate OptimizerPlus. Native compilation and machine binding are not guarantees against reverse engineering or privileged local tampering.
 
 ## Your own workload
 

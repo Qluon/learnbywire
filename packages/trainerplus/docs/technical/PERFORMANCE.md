@@ -10,7 +10,7 @@ The tested GPU was an RTX 5090 Laptop GPU (24 GiB, SM120), with Python 3.12, PyT
 
 ## TinyLlama 1.1B
 
-| Metric | TP native eager | TP native compiled | TP + OptimizerPlus |
+| Metric | TrainerPlus native eager | TrainerPlus native compiled | TrainerPlus + OptimizerPlus |
 |---|---:|---:|---:|
 | Full-workflow tokens/s | 2,202.7 | 4,917.4 | 9,981.3 |
 | Workflow seconds | 3,631.68 | 1,626.78 | 801.45 |
@@ -25,7 +25,7 @@ The tested GPU was an RTX 5090 Laptop GPU (24 GiB, SM120), with Python 3.12, PyT
 
 ## SmolLM2 1.7B
 
-| Metric | TP native eager | TP native compiled | TP + OptimizerPlus |
+| Metric | TrainerPlus native eager | TrainerPlus native compiled | TrainerPlus + OptimizerPlus |
 |---|---:|---:|---:|
 | Full-workflow tokens/s | 2,167.3 | 4,568.3 | 7,140.6 |
 | Workflow seconds | 3,690.94 | 1,751.08 | 1,120.28 |
@@ -40,9 +40,9 @@ The tested GPU was an RTX 5090 Laptop GPU (24 GiB, SM120), with Python 3.12, PyT
 
 ## Direct HF Trainer check: TinyLlama
 
-The direct baseline instantiates public `transformers.Trainer` without importing TrainerPlus, OptimizerPlus or LearnByWire. It uses public `default_data_collator`, fused PyTorch AdamW and `torch_compile=True`. Training settings, initial adapter, data order and evaluation panels match the TP-hosted native run. Evaluation is a shared standalone benchmark utility; this is not a third-party replication.
+The direct baseline instantiates public `transformers.Trainer` without importing TrainerPlus, OptimizerPlus or LearnByWire. It uses public `default_data_collator`, fused PyTorch AdamW and `torch_compile=True`. Training settings, initial adapter, data order and evaluation panels match the TrainerPlus-hosted native run. Evaluation is a shared standalone benchmark utility; this is not a third-party replication.
 
-| Metric | Direct HF compiled | TP native compiled | TP + OptimizerPlus |
+| Metric | Direct HF compiled | TrainerPlus native compiled | TrainerPlus + OptimizerPlus |
 |---|---:|---:|---:|
 | Full-workflow tokens/s | 4,779.2 | 4,917.4 | 9,981.3 |
 | Workflow seconds | 1,673.81 | 1,626.78 | 801.45 |
@@ -53,10 +53,10 @@ The direct baseline instantiates public `transformers.Trainer` without importing
 | Peak allocated VRAM (GiB) | 3.162 | 3.162 | 3.413 |
 | Peak reserved VRAM (GiB) | 3.336 | 3.336 | 4.281 |
 
-All 33 evaluation results and exported adapter tensors match exactly between direct HF and TP-native. The 2.9% observed TP-native throughput difference is not evidence of a repeatable TP speed advantage. The complete OP system has 2.09x throughput and 52.1% lower workflow time than this direct HF observation, with 41.4% lower GPU energy and 28.3% higher reserved VRAM.
+All 33 evaluation results and exported adapter tensors match exactly between direct HF and TrainerPlus-native. The 2.9% observed TrainerPlus-native throughput difference is not evidence of a repeatable TrainerPlus speed advantage. The complete OptimizerPlus system has 2.09x throughput and 52.1% lower workflow time than this direct HF observation, with 41.4% lower GPU energy and 28.3% higher reserved VRAM.
 
 ## Interpreting these measurements
 
-The extension study has one seed per model/arm and uses the same GPU at different times. Both models are Llama-style decoders. These measurements do not predict speed or quality on every workload, and do not restrict which compatible workloads users may try. The measured OP wheel uses the QA verification key and a valid signed QA entitlement. Customer-key and portable installation checks are reported separately. Exact-match weights in the HF check apply to its tested configuration.
+The extension study has one seed per model/arm and uses the same GPU at different times. Both models are Llama-style decoders. These measurements do not predict speed or quality on every workload, and do not restrict which compatible workloads users may try. The measured OptimizerPlus wheel uses the QA verification key and a valid signed QA entitlement. Customer-key and portable installation checks are reported separately. Exact-match weights in the HF check apply to its tested configuration.
 
-SmolLM2's OP retention PPL is 17.163 versus 16.526 before training: retention worsened from the original model despite beating the trained baselines. GPU energy is sampled whole-device energy, excluding CPU and wall-power overhead. Greater reserved VRAM is a real trade-off.
+SmolLM2's OptimizerPlus retention PPL is 17.163 versus 16.526 before training: retention worsened from the original model despite beating the trained baselines. GPU energy is sampled whole-device energy, excluding CPU and wall-power overhead. Greater reserved VRAM is a real trade-off.

@@ -6,7 +6,7 @@ LearnByWire provides a shared interface to TrainerPlus 1.1.1 and OptimizerPlus 1
 from learnbywire import TrainerPlus, OptimizerPlus, TrainingConfig
 ```
 
-`control=None` selects standard public HF Trainer. `control=OptimizerPlus` selects OP's training session. Installing the packages does not activate OP automatically. Full OP execution uses its own session rather than a drop-in standard HF Trainer optimizer.
+`control=None` selects standard public HF Trainer. `control=OptimizerPlus` selects OptimizerPlus's training session. Installing the packages does not activate OptimizerPlus automatically. Full OptimizerPlus execution uses its own session rather than a drop-in standard HF Trainer optimizer.
 
 ## Start here
 
@@ -30,6 +30,6 @@ PyPI publication of these versions is pending. You can [install TrainerPlus dire
 
 The published experiments are examples and performance evidence, not a list of permitted uses. Users can supply their own compatible models, datasets, optimizers and training settings; Qluon does not need to benchmark each configuration before users try it. Runtime compatibility depends on the implemented interfaces and execution requirements.
 
-See [installation](INSTALL.md), [TrainerPlus](packages/trainerplus/README.md), [configuration and compatibility](packages/trainerplus/docs/technical/SUPPORT_MATRIX.md) and [measured results](benchmarks/README.md). The results include a direct public HF baseline independent of TP imports.
+See [installation](INSTALL.md), [TrainerPlus](packages/trainerplus/README.md), [configuration and compatibility](packages/trainerplus/docs/technical/SUPPORT_MATRIX.md) and [measured results](benchmarks/README.md). The results include a direct public HF baseline independent of TrainerPlus imports.
 
 For maintainers: [publish the audited wheels through PyPI Trusted Publishing](docs/PUBLISHING.md).

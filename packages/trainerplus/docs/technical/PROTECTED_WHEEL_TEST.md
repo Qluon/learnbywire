@@ -1,8 +1,8 @@
 # Packaged-wheel qualification
 
-The measured OP 1.2.2 wheel passed installed integrity and module-ownership checks: 90 native modules, zero readable OP implementation files. A bounded 60-update GPU run matched the reference initialization, ordering, losses, weights and evaluations. All six two-model full epochs then passed with unchanged installed wheels.
+The measured OptimizerPlus 1.2.2 wheel passed installed integrity and module-ownership checks: 90 native modules, zero readable OptimizerPlus implementation files. A bounded 60-update GPU run matched the reference initialization, ordering, losses, weights and evaluations. All six two-model full epochs then passed with unchanged installed wheels.
 
-The direct public HF TinyLlama comparison matched TP-native adapter tensors and all 33 evaluation panels exactly. See [performance](PERFORMANCE.md).
+The direct public HF TinyLlama comparison matched TrainerPlus-native adapter tensors and all 33 evaluation panels exactly. See [performance](PERFORMANCE.md).
 
 These are QA-key results on the pinned SM120 environment. Final customer-wheel installation and licence qualification are recorded separately. A production verification key in a wheel does not alone establish customer entitlement or authorize publication. No claim of universal recovery, GPU sanitizer coverage or reverse-engineering resistance is made.
 
