@@ -1,0 +1,9 @@
+# Packaged-wheel qualification
+
+The measured OP 1.2.2 wheel passed installed integrity and module-ownership checks: 90 native modules, zero readable OP implementation files. A bounded 60-update GPU run matched the reference initialization, ordering, losses, weights and evaluations. All six two-model full epochs then passed with unchanged installed wheels.
+
+The direct public HF TinyLlama comparison matched TP-native adapter tensors and all 33 evaluation panels exactly. See [performance](PERFORMANCE.md).
+
+These are QA-key results on the pinned SM120 environment. Final customer-wheel installation and licence qualification are recorded separately. A production verification key in a wheel does not alone establish customer entitlement or authorize publication. No claim of universal recovery, GPU sanitizer coverage or reverse-engineering resistance is made.
+
+The manylinux QA wheel was also installed into a new venv from public dependency wheels. All 99 selected CPU checks passed (one CUDA-only check skipped in the CPU suite). A 60-update GPU check preserved reference initialization, data order, losses, final weights and evaluation exactly, with capture and shared loss compilation active. All 90 production-key native modules import, installed integrity passes and the QA entitlement is rejected. Positive production entitlement testing remains pending.

@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "learnbywire"
+version = "1.2.2"
+description = "Shared imports for TrainerPlus and the optional-use OptimizerPlus control layer"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+requires-python = ">=3.12,<3.13"
+dependencies = ["learnbywire-trainerplus[lora]==1.1.1", "learnbywire-optimizerplus[huggingface]==1.2.2"]
+authors = [{name = "Qluon Inc"}]
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["learnbywire"]
+
+[tool.setuptools]
+include-package-data = false

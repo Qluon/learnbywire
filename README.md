@@ -1,2 +1,33 @@
-# learnbywire
-Train language models with TrainerPlus and OptimizerPlus control. By Qluon.
+# LearnByWire 1.2.2
+
+LearnByWire provides a shared interface to TrainerPlus 1.1.1 and OptimizerPlus 1.2.2. OptimizerPlus is a control layer on a caller-supplied public optimizer such as PyTorch AdamW.
+
+```python
+from learnbywire import TrainerPlus, OptimizerPlus, TrainingConfig
+```
+
+`control=None` selects standard public HF Trainer. `control=OptimizerPlus` selects OP's training session. Installing the packages does not activate OP automatically. Full OP execution uses its own session rather than a drop-in standard HF Trainer optimizer.
+
+## Start here
+
+1. [Install, activate and complete your first run](GETTING_STARTED.md).
+2. [Use the complete Python example and your own data](docs/USER_GUIDE.md).
+3. [Resolve common setup and training errors](docs/TROUBLESHOOTING.md).
+
+Already using the 1.2.0 packages? Follow the [migration guide](MIGRATION.md) to keep the new packages' import ownership separate.
+
+The [first-run script](packages/trainerplus/examples/first_run.py) accepts your model ID or local folder and your training/validation files. It prepares LoRA and public AdamW, runs your chosen control and prints where to find the saved adapter and metrics. Use `--help` to see its settings.
+
+| Package | Python namespace | Source policy |
+|---|---|---|
+| learnbywire 1.2.2 | learnbywire | Apache-2.0 interface |
+| learnbywire-trainerplus 1.1.1 | trainerplus | Apache-2.0 orchestration |
+| learnbywire-optimizerplus 1.2.2 | optimizerplus | Separately licensed proprietary binary |
+
+This repository contains the LearnByWire interface and TrainerPlus source under Apache-2.0. OptimizerPlus remains separately proprietary and is distributed as a licensed binary; its implementation, build tools, signing keys and customer licences are excluded.
+
+PyPI publication of these versions is pending. You can [install TrainerPlus directly from this repository](INSTALL.md#trainerplus-without-optimizerplus) for native training. Combined installation requires the matching OptimizerPlus wheel and entitlement supplied by Qluon.
+
+The published experiments are examples and performance evidence, not a list of permitted uses. Users can supply their own compatible models, datasets, optimizers and training settings; Qluon does not need to benchmark each configuration before users try it. Runtime compatibility depends on the implemented interfaces and execution requirements.
+
+See [installation](INSTALL.md), [TrainerPlus](packages/trainerplus/README.md), [configuration and compatibility](packages/trainerplus/docs/technical/SUPPORT_MATRIX.md) and [measured results](benchmarks/README.md). The results include a direct public HF baseline independent of TP imports.

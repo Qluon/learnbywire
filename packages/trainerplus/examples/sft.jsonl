@@ -1,0 +1,2 @@
+{"prompt": "Question: What does an optimizer update?\nAnswer: ", "completion": "The trainable parameters of the model."}
+{"prompt": "Question: Why record the random seed?\nAnswer: ", "completion": "It helps reproduce initialization and data ordering."}

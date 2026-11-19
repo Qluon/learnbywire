@@ -1,0 +1,27 @@
+{
+  "product": "TrainerPlus",
+  "version": "1.1.1",
+  "published": false,
+  "publishable": false,
+  "status": "publication_preparation",
+  "package_checks_passed": true,
+  "new_version_full_epoch_run": true,
+  "direct_hf_comparison_passed": true,
+  "performance_report": "docs/technical/PERFORMANCE.md",
+  "qualification": "QUALIFICATION.md",
+  "pending": [
+    "production_key_qualification"
+  ],
+  "usage_policy": "Experiments document evidence; they do not restrict users to benchmarked configurations.",
+  "measured_environment": "single_GPU_SM120",
+  "coverage_notes": [
+    "new_version_recovery_not_revalidated",
+    "GPU_sanitizer_not_completed"
+  ],
+  "clean_installation_passed": true,
+  "manylinux_gpu_equivalence_passed": true,
+  "production_imports_passed": true,
+  "customer_examples": "Native CPT/SFT CPU smoke with validation and adapter reload; exact customer OP GPU command completed 50 updates, validation and adapter export with QA entitlement",
+  "public_package_licence": "Apache-2.0",
+  "licence_decision": "owner_confirmed_2026-11-19"
+}

@@ -1,0 +1,8 @@
+{
+  "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+  "NOTICE": "799ffa340616b58aa6a9216307af54c9a69a8d39ea8fa44dcfa43f1fec2939c3",
+  "README.md": "d86b22aae164fb68ade62fd7922f6ecd1bc0e4dd49d6a51a0d1e51b54f2814d4",
+  "pyproject.toml": "0510542d2a99b162824db6c6d2a5c5d3181215a8d7f8cd5824f4f3cb98186c7c",
+  "src/learnbywire/__init__.py": "346555104d1fca91dc2f2ad4970e563b3d5167376f010f392fd4b9280e9ff182",
+  "tests/test_facade.py": "8d6c72e14ed26ebf37cc1c54d9f7920537ca404deec09666b6a1cf46de983668"
+}

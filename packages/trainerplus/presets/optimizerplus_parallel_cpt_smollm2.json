@@ -1,0 +1,93 @@
+{
+  "schema": 1,
+  "name": "optimizerplus_parallel_cpt_smollm2_17b",
+  "trainer_version": "1.1.1",
+  "optimizerplus_version": "1.2.2",
+  "task": "cpt",
+  "environment": {
+    "PYTORCH_ALLOC_CONF": "expandable_segments:True"
+  },
+  "control_options": {
+    "control_profile": "medium",
+    "audition": "checkpoint_continue",
+    "acceleration": "accelerate",
+    "loss_backend": "standard",
+    "runtime": "fast",
+    "backend": "auto",
+    "loss_reduction": "microbatch_mean",
+    "microbatch_execution": "parallel"
+  },
+  "training": {
+    "num_epochs": 1,
+    "max_steps": 7812,
+    "microbatch_size": 1,
+    "gradient_accumulation_steps": 2,
+    "mixed_precision": "bf16",
+    "seed": 4007,
+    "shuffle": false,
+    "drop_last": false,
+    "lr_schedule": "constant",
+    "warmup_ratio": 0.0,
+    "max_grad_norm": null,
+    "native_compile": false,
+    "logging_steps": 250,
+    "save_model": false
+  },
+  "optimizer": {
+    "class": "torch.optim.AdamW",
+    "lr": 0.0002,
+    "betas": [
+      0.9,
+      0.95
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0.01,
+    "fused": true
+  },
+  "data": {
+    "max_length": 512,
+    "padding": "fixed"
+  },
+  "model": {
+    "id": "HuggingFaceTB/SmolLM2-1.7B",
+    "revision": "effd688a12921b4cc83e3312b6feb579f70f9c71",
+    "base_dtype": "bfloat16",
+    "adapter_dtype": "float32",
+    "attention": "sdpa",
+    "use_cache": false
+  },
+  "lora": {
+    "r": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0,
+    "bias": "none",
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ]
+  },
+  "input_contract": {
+    "consumed_rows": 15624,
+    "data_sha256": "dc8b793e6ea55d357eefc0e63e5fef6487628f62ff0ddf7520f1993cd2fd5932",
+    "order_sha256": "83fa14b5efce6da98e8368abfa5b55742a09645be62958dd761a7e0fd0fd451a",
+    "input_tokens": 7999488,
+    "supervised_tokens": 7983864
+  },
+  "measurement": {
+    "scope": "Full-workflow benchmark; API train() timing is different",
+    "evaluation": {
+      "interval": 250,
+      "online_records": 64,
+      "endpoint_records": 256,
+      "retention_records": 128,
+      "batch_size": 2
+    },
+    "export": "After final evaluation"
+  },
+  "note": "Exact settings of the completed 1.2.2/1.1.1 one-seed benchmark, not general defaults. Frozen token tensors already have seed4007 row order and the incomplete pair removed."
+}

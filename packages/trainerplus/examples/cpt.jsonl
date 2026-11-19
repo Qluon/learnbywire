@@ -1,0 +1,2 @@
+{"text": "A training experiment should record its configuration, data order, and evaluation method."}
+{"text": "A checkpoint stores the state required to resume an interrupted training workload."}
