@@ -39,3 +39,7 @@ The published experiments are examples and performance evidence, not a list of p
 See [installation](INSTALL.md), [TrainerPlus](packages/trainerplus/README.md), [configuration and compatibility](packages/trainerplus/docs/technical/SUPPORT_MATRIX.md) and [measured results](benchmarks/README.md). The results include a direct public HF baseline independent of TrainerPlus imports.
 
 For maintainers: [publish the audited wheels through PyPI Trusted Publishing](docs/PUBLISHING.md).
+
+## Explore the release
+
+Read the [OptimizerPlus results article, demonstration guide and downloadable graphics](docs/launch/README.md). The comparisons include workflow time, validation and retention perplexity, GPU energy and peak memory, with the exact benchmark conditions.
