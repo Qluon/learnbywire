@@ -10,6 +10,8 @@ from learnbywire import TrainerPlus, OptimizerPlus, TrainingConfig
 
 ## Start here
 
+For a single download, get the [customer kit ZIP](https://github.com/Qluon/learnbywire/releases/download/v1.2.2/learnbywire-1.2.2-customer-kit.zip). It contains the public guides, runnable examples, licence-request and evaluation forms. Start with its README; the [archive checksum](https://github.com/Qluon/learnbywire/releases/download/v1.2.2/learnbywire-1.2.2-customer-kit.zip.sha256) is supplied separately.
+
 1. [Install, activate and complete your first run](GETTING_STARTED.md).
 2. [Use the complete Python example and your own data](docs/USER_GUIDE.md).
 3. [Resolve common setup and training errors](docs/TROUBLESHOOTING.md).

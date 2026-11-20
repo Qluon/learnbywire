@@ -6,6 +6,8 @@ This guide uses LearnByWire 1.2.2, OptimizerPlus 1.2.2 and TrainerPlus 1.1.1. Al
 
 ## 1. Install
 
+You can [download the customer kit](https://github.com/Qluon/learnbywire/releases/download/v1.2.2/learnbywire-1.2.2-customer-kit.zip) and follow its README using the included examples, or use the repository route below. Both routes install the same package versions from PyPI.
+
 For OptimizerPlus use Linux x86-64, CPython 3.12, a compatible NVIDIA GPU and driver. Download the public examples, create a new environment and install the packages from PyPI. Cloning supplies the scripts; the training packages come from PyPI:
 
 ```bash
