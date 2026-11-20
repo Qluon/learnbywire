@@ -4,11 +4,12 @@ Start with `python -m pip check`. For OptimizerPlus also run `optimizerplus doct
 
 | Symptom | Likely cause | Next action |
 |---|---|---|
-| No matching OptimizerPlus wheel | Python/platform mismatch or local wheels not supplied | Use CPython 3.12 Linux x86-64 and the approved wheel bundle; see [installation](../INSTALL.md) |
+| No matching OptimizerPlus wheel | Python/platform mismatch or wrong package index | Use CPython 3.12 Linux x86-64 and install the pinned release from PyPI; see [installation](../INSTALL.md) |
 | Import conflict or wrong version | Mixed package ownership or stale environment | Create a fresh venv and install the pinned three-package combination |
 | No CUDA device | Driver, CUDA-enabled PyTorch or device visibility | Check `nvidia-smi`, the CUDA PyTorch installation and `CUDA_VISIBLE_DEVICES` |
 | More than one visible GPU | Current TrainerPlus orchestrator expects one device | Select the intended device before launch, for example `CUDA_VISIBLE_DEVICES=0` |
-| Licence missing, wrong version, expired or machine mismatch | Entitlement does not match this host/release | Ask the supplier for a matching entitlement; set its path, not its contents, in the environment |
+| Licence missing, wrong version, expired or machine mismatch | Entitlement does not match this host/release | Follow the [licence guide](LICENSING.md) to request matching access; set its path, not its contents, in the environment |
+| Licence file permissions too broad | The licence is readable by other users | Apply `chmod 600 /private/path/customer.license` as the file owner |
 | Record exceeds max length | Truncation defaults to an error to avoid silent data loss | Increase `--length`, prepare shorter records or deliberately select `--truncate` |
 | Incomplete update group | Prepared rows not divisible by microbatch × accumulation | Adjust the batch sizes/data or explicitly use `--drop-last` |
 | Fewer than 50 updates | Current automatic OptimizerPlus controller minimum | Supply enough data/epochs for 50 updates; do not assume the script repeats data automatically |
@@ -33,5 +34,7 @@ For a native baseline choose `control=None`; compilation is a separate native se
 Reserved GPU memory is PyTorch's allocator pool; allocated memory is memory currently occupied by tensors. Reserved memory can exceed allocated memory because the allocator retains reusable blocks and graph capture has persistent requirements. Do not insert `empty_cache()` into every update as a blanket fix; measure its effect and preserve capture requirements.
 
 ## A useful support report
+
+Use the [support-report instructions](SUPPORT_REPORT.md) for a local helper and a request template. The helper does not upload anything.
 
 Include package/Python/PyTorch versions, GPU model, model ID/revision, task, batch sizes, token length, precision, schedule, control options, complete error text and a small non-sensitive data sample. State whether the issue also occurs with native training. Attach only reviewed, sanitized manifests and logs: they can contain paths, model identities and user configuration. Exclude licence files, signing keys and proprietary data. There is no requirement to wait for Qluon to benchmark your model before you try it.

@@ -46,9 +46,10 @@ Native training does not require an OptimizerPlus licence. The public `examples/
 
 ## OptimizerPlus activation
 
-A signed entitlement authorizing OptimizerPlus 1.2.2 is required for controlled training. Obtain the host fingerprint with `optimizerplus machine-id` and provide it privately to Qluon. Supply the returned licence path with `QLUON_OPTIMIZER_PLUS_LICENSE_FILE`; never commit the file.
+A signed entitlement authorizing OptimizerPlus 1.2.2 is required for controlled training. Follow the [licence request and renewal guide](docs/LICENSING.md) to obtain the host fingerprint and provide it privately to Qluon. Supply the returned licence path with `QLUON_OPTIMIZER_PLUS_LICENSE_FILE`; never commit the file.
 
 ```bash
+chmod 600 /private/path/customer.license
 export QLUON_OPTIMIZER_PLUS_LICENSE_FILE=/private/path/customer.license
 optimizerplus verify-install
 optimizerplus license-status

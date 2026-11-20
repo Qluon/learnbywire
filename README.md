@@ -13,6 +13,10 @@ from learnbywire import TrainerPlus, OptimizerPlus, TrainingConfig
 1. [Install, activate and complete your first run](GETTING_STARTED.md).
 2. [Use the complete Python example and your own data](docs/USER_GUIDE.md).
 3. [Resolve common setup and training errors](docs/TROUBLESHOOTING.md).
+4. [Request an OptimizerPlus licence or renew access](docs/LICENSING.md).
+5. [Evaluate your own workload and follow up with Qluon](docs/PILOT_GUIDE.md).
+
+[Fresh PyPI installation and customer-example validation](docs/ONBOARDING_VALIDATION.md) records the release's installation-to-adapter check. For help, create a [local support report](docs/SUPPORT_REPORT.md) and review it before sharing.
 
 Already using the 1.2.0 packages? Follow the [migration guide](MIGRATION.md) to keep the new packages' import ownership separate.
 

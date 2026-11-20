@@ -6,9 +6,11 @@ This guide uses LearnByWire 1.2.2, OptimizerPlus 1.2.2 and TrainerPlus 1.1.1. Al
 
 ## 1. Install
 
-For OptimizerPlus use Linux x86-64, CPython 3.12, a compatible NVIDIA GPU and driver. Create a new environment and install the packages from PyPI:
+For OptimizerPlus use Linux x86-64, CPython 3.12, a compatible NVIDIA GPU and driver. Download the public examples, create a new environment and install the packages from PyPI. Cloning supplies the scripts; the training packages come from PyPI:
 
 ```bash
+git clone https://github.com/Qluon/learnbywire.git
+cd learnbywire
 python3.12 -m venv .venv
 . .venv/bin/activate
 python -m pip install 'torch==2.11.0+cu128' --index-url https://download.pytorch.org/whl/cu128
@@ -24,9 +26,10 @@ Expected last output: `No broken requirements found.` The combined installation 
 optimizerplus machine-id
 ```
 
-Give this fingerprint privately to the Qluon contact supplying your package and obtain an entitlement for OptimizerPlus 1.2.2. Keep the returned licence outside your source repository:
+Follow the [licence request instructions](docs/LICENSING.md#request-access) to send this fingerprint privately to Qluon and obtain an entitlement for OptimizerPlus 1.2.2. Keep the returned licence outside your source repository:
 
 ```bash
+chmod 600 /private/path/customer.license
 export QLUON_OPTIMIZER_PLUS_LICENSE_FILE=/private/path/customer.license
 export CUDA_VISIBLE_DEVICES=0
 optimizerplus version
@@ -100,4 +103,4 @@ Run the same command with `--control native` and a different output directory. A
 
 If you only want to check TrainerPlus on CPU, use `--control native --device cpu --steps 2` with a suitably small model. This tests usage, not GPU performance.
 
-Next: [complete Python usage, data and settings](docs/USER_GUIDE.md), [troubleshooting](docs/TROUBLESHOOTING.md), and [configuration requirements](packages/trainerplus/docs/technical/SUPPORT_MATRIX.md).
+Next: [complete Python usage, data and settings](docs/USER_GUIDE.md), [evaluate your workload and arrange follow-up](docs/PILOT_GUIDE.md), [prepare a support report](docs/SUPPORT_REPORT.md), [troubleshooting](docs/TROUBLESHOOTING.md), and [configuration requirements](packages/trainerplus/docs/technical/SUPPORT_MATRIX.md).
