@@ -26,8 +26,7 @@
       "filename": "learnbywire-1.2.2-py3-none-any.whl",
       "sha256": "69231552e0e43fd467e72071cc471d6f7aab32e456794d1edbb4d4479693c40a",
       "release_tag": "v1.2.2",
-      "approved_for_pypi": false,
-      "pending": "Publish the qualified OptimizerPlus and TrainerPlus dependencies first",
+      "approved_for_pypi": true,
       "namespace": "learnbywire",
       "license": "Apache-2.0",
       "requires_published": [
@@ -37,3 +36,4 @@
     }
   }
 }
+
