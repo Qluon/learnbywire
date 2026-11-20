@@ -26,7 +26,7 @@ The [first-run script](packages/trainerplus/examples/first_run.py) accepts your 
 
 This repository contains the LearnByWire interface and TrainerPlus source under Apache-2.0. OptimizerPlus remains separately proprietary and is distributed as a licensed binary; its implementation, build tools, signing keys and customer licences are excluded.
 
-TrainerPlus 1.1.1 is [available on PyPI](https://pypi.org/project/learnbywire-trainerplus/1.1.1/) for native training; see [installation](INSTALL.md#trainerplus-without-optimizerplus). LearnByWire 1.2.2 and OptimizerPlus 1.2.2 publication remains pending. Combined installation requires the matching OptimizerPlus wheel and entitlement supplied by Qluon.
+[LearnByWire 1.2.2](https://pypi.org/project/learnbywire/1.2.2/), [OptimizerPlus 1.2.2](https://pypi.org/project/learnbywire-optimizerplus/1.2.2/) and [TrainerPlus 1.1.1](https://pypi.org/project/learnbywire-trainerplus/1.1.1/) are available on PyPI. Install the combined package with `python -m pip install learnbywire==1.2.2` after preparing the environment in the [installation guide](INSTALL.md). OptimizerPlus training requires a signed entitlement supplied by Qluon; native TrainerPlus training does not.
 
 The published experiments are examples and performance evidence, not a list of permitted uses. Users can supply their own compatible models, datasets, optimizers and training settings; Qluon does not need to benchmark each configuration before users try it. Runtime compatibility depends on the implemented interfaces and execution requirements.
 

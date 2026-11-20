@@ -1,6 +1,6 @@
 # Installation and activation
 
-TrainerPlus 1.1.1 is available on PyPI. Publication of LearnByWire 1.2.2 and OptimizerPlus 1.2.2 remains pending. Combined installation uses the approved wheel bundle when supplied by Qluon.
+LearnByWire 1.2.2, OptimizerPlus 1.2.2 and TrainerPlus 1.1.1 are available on PyPI. The combined installation installs both components. OptimizerPlus training requires a signed entitlement supplied by Qluon.
 
 ## Combined installation
 
@@ -10,7 +10,7 @@ Use CPython 3.12 on Linux x86-64 and a fresh virtual environment. Install the re
 python3.12 -m venv .venv
 . .venv/bin/activate
 python -m pip install 'torch==2.11.0+cu128' --index-url https://download.pytorch.org/whl/cu128
-python -m pip install --find-links /path/to/approved-wheel-bundle 'learnbywire==1.2.2'
+python -m pip install 'learnbywire==1.2.2'
 python -m pip check
 ```
 

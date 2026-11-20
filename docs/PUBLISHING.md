@@ -15,7 +15,7 @@ Sign into PyPI as the owner of the projects. Register the same GitHub publisher 
 | Workflow filename | `publish-pypi.yml` |
 | Environment | `pypi` |
 
-For the existing `learnbywire` and `learnbywire-optimizerplus` projects, use the project's **Manage → Publishing** page. For the new `learnbywire-trainerplus` project, use your account's **Publishing** page to add a pending publisher with that exact project name. A pending publisher does not reserve the name.
+All three projects now exist on PyPI. Register the publisher separately on each project's **Manage → Publishing** page: `learnbywire`, `learnbywire-optimizerplus` and `learnbywire-trainerplus`. Registration on one project does not authorize uploads to the others.
 
 The PyPI publisher owner is the GitHub repository owner, **Qluon**, even when a collaborator dispatches the workflow. No PyPI token belongs in this repository or in a chat.
 

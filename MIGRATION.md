@@ -10,11 +10,11 @@ Keep the previous environment intact for existing work. Create a separate Python
 python3.12 -m venv .venv-lbw122
 . .venv-lbw122/bin/activate
 python -m pip install 'torch==2.11.0+cu128' --index-url https://download.pytorch.org/whl/cu128
-python -m pip install --find-links /path/to/approved-wheel-bundle 'learnbywire==1.2.2'
+python -m pip install 'learnbywire==1.2.2'
 python -m pip check
 ```
 
-The `--find-links` path is needed while these versions are supplied as a wheel bundle. After the versions are published on PyPI, install the same pinned version directly from PyPI.
+These versions are available directly from PyPI. An offline installation can use the same qualified wheel bundle and checksums supplied by Qluon.
 
 | Distribution | Version | Import directory it owns | Licence |
 |---|---|---|---|

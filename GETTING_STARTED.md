@@ -2,17 +2,17 @@
 
 LearnByWire combines TrainerPlus, which prepares data and manages training, with OptimizerPlus, a control layer over your existing optimizer. You provide the model, data and training settings. The published benchmarks are examples, not a list of permitted models or datasets.
 
-This guide uses LearnByWire 1.2.2, OptimizerPlus 1.2.2 and TrainerPlus 1.1.1. TrainerPlus 1.1.1 is available on PyPI; publication of the other two packages remains pending. For native training, [install TrainerPlus](INSTALL.md#trainerplus-without-optimizerplus), skip OptimizerPlus activation and use `--control native` in the training command below. OptimizerPlus training requires the matching wheel bundle and entitlement supplied by Qluon. The example files below are in this source repository, not installed by the wheels.
+This guide uses LearnByWire 1.2.2, OptimizerPlus 1.2.2 and TrainerPlus 1.1.1. All three packages are available on PyPI. For native training, [install TrainerPlus](INSTALL.md#trainerplus-without-optimizerplus), skip OptimizerPlus activation and use `--control native` in the training command below. OptimizerPlus training requires a signed entitlement supplied by Qluon. The example files below are in this source repository, not installed by the wheels.
 
 ## 1. Install
 
-For OptimizerPlus use Linux x86-64, CPython 3.12, a compatible NVIDIA GPU and driver. Create a new environment and replace the wheel-bundle path with your supplied directory:
+For OptimizerPlus use Linux x86-64, CPython 3.12, a compatible NVIDIA GPU and driver. Create a new environment and install the packages from PyPI:
 
 ```bash
 python3.12 -m venv .venv
 . .venv/bin/activate
 python -m pip install 'torch==2.11.0+cu128' --index-url https://download.pytorch.org/whl/cu128
-python -m pip install --find-links /path/to/approved-wheel-bundle 'learnbywire==1.2.2'
+python -m pip install 'learnbywire==1.2.2'
 python -m pip check
 ```
 
